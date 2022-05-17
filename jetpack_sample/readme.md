@@ -7,4 +7,4 @@
 # 모듈
 
 * [room_ex](./room_ex/readme.md): [Kotlin] DB를 이용한 데이터 저장방법 Room
-* [livedata_ex](./room_ex/readme.md): [Kotlin] LiveData
+* [livedata_ex](./livedata_ex/readme.md): [Kotlin] LiveData
