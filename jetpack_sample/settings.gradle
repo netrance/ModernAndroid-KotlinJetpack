@@ -1,0 +1,2 @@
+include ':room_ex'
+rootProject.name = "Modern Android - Kotlin and Jetpack"
