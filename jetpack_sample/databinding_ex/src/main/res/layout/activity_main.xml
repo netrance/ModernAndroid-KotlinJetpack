@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+        <!-- import 태그로 등록한 데이터 타입에 한해 variable 태그의 type 속성에 클래스 이름만으로 지정 가능 -->
+        <import
+            type="lee.dorian.android.modern_android_kotlin_jetpack.databinding_ex.MainViewModel" />
+
+        <!-- 바인딩 객체에 추가될 변수. name 속성은 변수의 이름, type 속성은 변수의 데이터 타입 -->
+        <variable
+            name="viewModel"
+            type="MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:padding="5dp"
+        tools:context=".MainActivity">
+
+        <!-- 이 뷰의 text 속성을 viewModel 객체의 todo 필드와 양방향 데이터 바인딩 -->
+        <androidx.appcompat.widget.AppCompatEditText
+            android:id="@+id/todoEdit"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:hint="할 일을 입력하세요."
+            android:text="@={viewModel.todo}"
+            app:layout_constraintBottom_toBottomOf="@id/addTodoButton"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toLeftOf="@id/addTodoButton"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- 클릭시 onClick 속성에 작성된 자바 코드를 실행하여 새로운 할 일 추가 -->
+        <androidx.appcompat.widget.AppCompatButton
+            android:id="@+id/addTodoButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{() -> viewModel.insert()}"
+            android:text="할 일 추가"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <!-- 이 뷰의 text 속성을 viewModel.todoList.toString()의 리턴 값과 단방향 데이터 바인딩 -->
+        <!-- 이후 todoList가 변경될 때마다 자동으로 이 뷰의 내용이 갱신됨 -->
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/todoText"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginLeft="2dp"
+            android:layout_marginRight="2dp"
+            android:background="#EFEFEF"
+            android:text="@{viewModel.todoList.toString()}"
+            android:textColor="@color/black"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintLeft_toLeftOf="parent"
+            app:layout_constraintRight_toRightOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/addTodoButton" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</layout>

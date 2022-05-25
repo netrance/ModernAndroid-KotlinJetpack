@@ -1,3 +1,4 @@
+include ':databinding_ex'
 include ':viewmodel_ex'
 include ':livedata_ex'
 include ':room_ex'
